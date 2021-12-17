@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="top-bar">
+        <ul class="top-bar-buttons">
+            <li><button id="collapse-bar">
+                <div class="menu-icon"></div>
+                <div class="menu-icon"></div>
+                <div class="menu-icon"></div>
+            </button></li>
+            <li><button class="home">Home</button></li>
+            <li><button id="add">Add</button></li>
+        </ul>
+        <div id="date">
+        </div>
+    </div>
+    <div class="content">
+        <div id="filter-bar">
+            <div class="filter-when">When</div>
+            <ul id="filter-when">
+                <li>
+                    <button value="Past">Past</button>
+                </li>
+                <li>
+                    <button value="Today">Today</button>
+                </li>
+                <li>
+                    <button value="Tomorrow">Tomorrow</button>
+                </li>
+                <li>
+                    <button value="This Week">This Week</button>
+                </li>
+                <li>
+                    <button value="Future">Future</button>
+                </li>
+            </ul>
+            <div class="filter-category">Category</div>
+            <ul id="filter-category">
+
+            </ul>
+            <div class="filter-priority">Priority</div>
+            <ul id="filter-priority">
+                <li>
+                    <button value="Important">Important</button>
+                </li>
+                <li>
+                    <button value="Normal">Normal</button>
+                </li>
+                <li>
+                    <button value="Not Important">Not Important</button>
+                </li>
+            </ul>
+        </div>
+        <div class="tasks">
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
