@@ -35,6 +35,13 @@ export function createNewTaskForm () {
         formFieldSet.appendChild(name);
     })();
 
+    const taskDate = (() => {
+        const date = document.createElement("input");
+        date.type = "date";
+        date.id = "date";
+        formFieldSet.appendChild(date);
+    })();
+
     const taskDescription = (() => {
         const description = document.createElement("textarea");
         description.id = "description";
@@ -42,12 +49,6 @@ export function createNewTaskForm () {
         formFieldSet.appendChild(description);
     })();
 
-    const taskDate = (() => {
-        const date = document.createElement("input");
-        date.type = "date";
-        date.id = "date";
-        formFieldSet.appendChild(date);
-    })();
 
     const taskCategory = (() => {
         const category = document.createElement("input");
@@ -65,7 +66,6 @@ export function createNewTaskForm () {
         const options = (() => {
             const optionsArray = ["Choose Priority...","Important", "Normal", "Not Important"];
             const prioritySelect = document.getElementById("priority");
-            console.log(prioritySelect);
             
             for (const choices of optionsArray) {
                 const option = document.createElement("option");
@@ -73,25 +73,25 @@ export function createNewTaskForm () {
                 option.textContent = choices;
                 prioritySelect.appendChild(option);
 
-                console.log(option);
-
                 if (choices == "Choose Priority...") {
                     option.setAttribute("disabled", "");
-                    option.setAttribute("hidden", "");
+                    // option.setAttribute("hidden", "");
                 }
             }
         })();
     })();
 
     const taskSubmit = (() => {
-        const submitButton = document.createElement("input");
-        submitButton.type = "submit";
+        const submitButton = document.createElement("button");
+        submitButton.textContent = "✓"
+        submitButton.id = "submit";
         formFieldSet.appendChild(submitButton);
     })();
 
     const taskCancel = (() => {
         const cancelButton = document.createElement("button");
-        cancelButton.textContent = "Cancel";
+        cancelButton.id = "cancel";
+        cancelButton.textContent = "X";
         cancelButton.addEventListener("click", function () {
             const entireForm = document.getElementsByClassName("form-container");
             
@@ -99,15 +99,4 @@ export function createNewTaskForm () {
         })
         formFieldSet.appendChild(cancelButton);
     })();
-
-    // const createLabels = (() => {
-    //     const labels = ["task", "description", "date", "category", "priority"];
-
-    //     for (const label of labels) {
-    //         const createLabels = document.createElement("label");
-    //         createLabels.htmlFor = label;
-    //         createLabels.textContent = label.charAt(0).toUpperCase() + label.slice(1);
-    //         formFieldSet.appendChild(createLabels);
-    //     }
-    // })();
 }

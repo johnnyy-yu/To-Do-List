@@ -1,0 +1,79 @@
+.form-container {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    padding: 300px 0 0;
+}
+
+legend {
+    text-align: center;
+}
+
+#form {
+    margin: 0 4%;
+}
+
+fieldset {
+    padding: 4% 2% 8%;
+    display: grid;
+    grid-template-columns: [start] 40% [line2] 20% [line3] 20% [line4] 20%;
+    grid-template-rows: [row0] auto [row1] 45% [row3] 35%;
+}
+
+#task,
+#date,
+#category,
+#priority {
+    border-radius: 28px;
+    padding: 0 16px 0;
+}
+
+#task {
+    grid-column-end: 4;
+    grid-column-start: 1;
+    height: 120%;
+}
+
+#date {
+    margin-left: 10%;
+    height: 120%;
+}
+
+#description {
+    margin-top: 6%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 165%;
+    resize: none;
+    border-radius: 100px;
+    padding: 20px 40px 0 40px;
+}
+
+#category {
+    margin-top: 18%;
+    margin-left: 10%;
+    height: 60%;
+}
+
+#priority {
+    margin-left: 10%;
+    margin-top: 18%;
+    height: 70%;
+}
+
+#submit {
+    grid-row-start: 4;
+    grid-column-start: 3;
+    width: 36%;
+    margin-left: 114%;
+    text-align: center;
+}
+
+#cancel {
+    grid-row-start: 4;
+    grid-column-start: 4;
+    width: 36%;
+    margin-left: 60%;
+    text-align: center
+}

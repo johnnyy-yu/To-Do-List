@@ -1,18 +1,7 @@
 
 html {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-}
-.top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    background-color: rgb(73, 113, 189);
-    padding: 18px 12px;
+    height: 100%;
+    width: 100%;
 }
 
 ul {
@@ -26,29 +15,7 @@ li {
     float: left;
 }
 
-.menu-icon {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin: 4px 0;
-}
 
-.collapse-bar,
-.home,
-.add {
-    background-color: rgba(255, 255, 255, 0.37);
-    border-color:rgb(173, 168, 168)
-}
-
-.collapse-bar:hover {
-    background-color: rgb(173, 168, 168);
-}
-
-.date {
-    position: fixed;
-    right: 20px;
-    padding: 6px 12px;
-}
 
 .content {
     position: fixed;

@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Todo List</title>
 </head>
 <body>
-    <div class="top-bar">
-        <ul class="top-bar-buttons">
-            <li><button id="collapse-bar">
-                <div class="menu-icon"></div>
-                <div class="menu-icon"></div>
-                <div class="menu-icon"></div>
-            </button></li>
-            <li><button class="home">Home</button></li>
-            <li><button id="add">Add</button></li>
+    <div class="nav-bar">
+        <ul class="nav-bar-buttons">
+            <li><button id="collapse-bar"><i class="material-icons">menu</i></button></li>
+            <li><button class="home"><i class="material-icons">home</i></button></li>
+            <li><button id="add"><i class="material-icons">add</i></button></li>
         </ul>
-        <div id="date">
-        </div>
+        <div id="today-date"></div>
     </div>
     <div class="content">
         <div id="filter-bar">

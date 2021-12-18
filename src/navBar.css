@@ -1,44 +1,22 @@
-/* .top-bar {
+.nav-bar {
+    color: white;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     background-color: rgb(73, 113, 189);
     padding: 18px 12px;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.material-icons {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 1); 
 }
 
-li {
-    display: inline;
-    float: left;
-}
-
-.menu-icon {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin: 4px 0;
-}
-
-.collapse-bar,
-.home,
-.add {
-    background-color: rgba(255, 255, 255, 0.37);
-    border-color:rgb(173, 168, 168)
-}
-
-.collapse-bar:hover {
-    background-color: rgb(173, 168, 168);
-}
-
-#date {
+#today-date {
     position: fixed;
-    right: 20px;
-    padding: 6px 12px;
-} */
+    right: 0px;
+    padding: 5px 12px;
+}
