@@ -92,11 +92,12 @@ export function createNewTaskForm () {
         const cancelButton = document.createElement("button");
         cancelButton.id = "cancel";
         cancelButton.textContent = "X";
-        cancelButton.addEventListener("click", function () {
-            const entireForm = document.getElementsByClassName("form-container");
-            
-            entireForm[0].remove();
-        })
+        cancelButton.addEventListener("click", () => {closeForm()});
         formFieldSet.appendChild(cancelButton);
     })();
+}
+
+export function closeForm () {
+    const entireForm = document.getElementsByClassName("form-container");      
+    entireForm[0].remove();
 }

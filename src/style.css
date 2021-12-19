@@ -15,8 +15,6 @@ li {
     float: left;
 }
 
-
-
 .content {
     position: fixed;
     top: 65px;
@@ -35,4 +33,6 @@ li {
     /* width: 100vw; */
     flex: 1;
     padding: 40px 40px;
+    color: black;
 }
+

@@ -3,9 +3,22 @@ import "./navBar.css";
 import "./form.css";
 import {format} from "date-fns";
 import {createNewTaskForm} from "./createNewTask.js";
+import {addNewTask} from "./ToDoList.js";
+import {closeForm} from "./createNewTask.js";
+import {addTasksToDOM} from "./app.js";
 
-document.getElementById("collapse-bar").addEventListener("click", toggleFilterBar);
-document.getElementById("add").addEventListener("click", createNewTaskForm);
+(function addEventListers () {
+    document.getElementById("collapse-bar").addEventListener("click", toggleFilterBar);
+
+    document.getElementById("add").addEventListener("click", function () {
+        createNewTaskForm();
+        document.getElementById("submit").addEventListener("click", function (event) {
+            event.preventDefault();
+            addNewTask();
+            closeForm();
+        });
+    });
+})();
 
 function toggleFilterBar() {
     const toggle = document.getElementById("filter-bar");
@@ -20,5 +33,9 @@ function toggleFilterBar() {
 (function currentDate() {
     const dateElement = document.getElementById("today-date");
     dateElement.textContent = format(new Date(), "MM/dd/yyyy");
+})();
+
+(function allTasks () {
+    addTasksToDOM(localStorage);
 })();
 
