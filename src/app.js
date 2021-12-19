@@ -32,7 +32,6 @@ export function addCategoryToFilterMenu (aCategory) {
 export function addTasksToDOM (filteredArray) {
     const DOM = document.querySelector(".tasks");
     DOM.textContent = "";
-    console.log(filteredArray);
 
     for (let i = 0; i < filteredArray.length; i++) {
         const key = filteredArray[i][0][0]

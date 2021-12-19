@@ -1,20 +1,41 @@
 import { isFuture, isPast, isThisWeek, isToday, isTomorrow } from "date-fns";
 
 export class sort {
-    convertStorageToArray () {
-        const objects = Object.assign({}, localStorage);
-        const array = [];
+    sortedArray() {
+        let convertedArray = [];
+        let sortedArray = [];
 
-        for (const tasks in objects) {
-            const taskDetails = JSON.parse((localStorage.getItem(tasks)));
-            array.push([tasks, taskDetails]);
-        }
+        const convertStorageToArray = (() => {
+            const objects = Object.assign({}, localStorage);
+            
+            for (const tasks in objects) {
+                const taskDetails = JSON.parse((localStorage.getItem(tasks)));
+                convertedArray.push([tasks, taskDetails]);
+            }
+        })();
 
-        return array;
+        const sortArray = (() => {
+            sortedArray = convertedArray;
+
+            sortedArray.sort(function compare(a, b) {
+                const dateA = new Date(a[1]["when"]);
+                const dateB = new Date(b[1]["when"]);
+
+                const priorityA = a[1]["priority"];
+                const priorityB = b[1]["priority"];
+
+                const taskA = a[1]["task"];
+                const taskB = b[1]["task"]
+
+                return dateA - dateB || priorityA - priorityB || taskA - taskB;
+            });
+        })();
+
+        return sortedArray;
     }
 
     all() {
-        const array = this.convertStorageToArray();
+        const array = this.sortedArray();
         const allArray = [];
 
         for (const tasks in array) {
@@ -25,106 +46,106 @@ export class sort {
     }
 
     past() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
 
         for (const tasks in array) {
-            if (isPast(new Date(array[tasks][1]["when"]))) {
-                sortedArray.push ([array[tasks]]);
+            if (isPast(new Date(array[tasks][1]["when"])) && !isToday(new Date(array[tasks][1]["when"]))) {
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     future() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
 
         for (const tasks in array) {
             if (isFuture(new Date(array[tasks][1]["when"]))) {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     thisWeek() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
         
         for (const tasks in array) {
             if (isThisWeek(new Date(array[tasks][1]["when"]))) {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     today() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
         
         for (const tasks in array) {
             if (isToday(new Date(array[tasks][1]["when"]))) {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     tomorrow() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
         
         for (const tasks in array) {
             if (isTomorrow(new Date(array[tasks][1]["when"]))) {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     important() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
         
         for (const tasks in array) {
             if (array[tasks][1]["priority"] === "Important") {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     normal() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
         
         for (const tasks in array) {
             if (array[tasks][1]["priority"] === "Normal") {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 
     notImportant() {
-        const array = this.convertStorageToArray();
-        const sortedArray = [];
+        const array = this.sortedArray();
+        const filteredArray = [];
         
         for (const tasks in array) {
             if (array[tasks][1]["priority"] === "Not Important") {
-                sortedArray.push ([array[tasks]]);
+                filteredArray.push ([array[tasks]]);
             }
         }
 
-        return sortedArray;
+        return filteredArray;
     }
 }

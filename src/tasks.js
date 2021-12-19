@@ -1,6 +1,5 @@
 import {addCategoryToFilterMenu} from "./app.js";
-import {addTasksToDOM} from "./app.js";
-// import {}
+import format from "date-fns/format";
 
 class Task {
     constructor (taskName, description, when, category, priority,) {
@@ -18,7 +17,7 @@ export function addNewTask () {
     function createNewTaskFromForm () {
         const task = document.getElementById("task").value;
         const description = document.getElementById("description").value;
-        const date = document.getElementById("date").value;
+        const date = format(new Date(document.getElementById("date").value.replace(/-/g, '\/')), "MM/dd/yyyy");
         const category = document.getElementById("category").value;
         const priority = document.getElementById("priority").value;
 
@@ -35,11 +34,4 @@ export function addNewTask () {
     (function addCategoryToFilters () {
         addCategoryToFilterMenu(newTask.category);
     })();
-    // function addNew
-
-    // (function addTaskToDOM () {
-    //     // const retrieveObject = localStorage.getItem
-    //     document.querySelector(".tasks").textContent = "";
-    //     addTasksToDOM(localStorage);
-    // })();
 }
