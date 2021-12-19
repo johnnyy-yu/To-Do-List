@@ -1,5 +1,6 @@
 import {addCategoryToFilterMenu} from "./app.js";
 import {addTasksToDOM} from "./app.js";
+// import {}
 
 class Task {
     constructor (taskName, description, when, category, priority,) {
@@ -10,8 +11,6 @@ class Task {
         this.priority = priority;
     }
 }
-
-let TaskArray = [];
 
 export function addNewTask () {
     let newTask = null;
@@ -38,9 +37,9 @@ export function addNewTask () {
     })();
     // function addNew
 
-    (function addTaskToDOM () {
-        // const retrieveObject = localStorage.getItem
-        document.querySelector(".tasks").textContent = "";
-        addTasksToDOM(localStorage);
-    })();
+    // (function addTaskToDOM () {
+    //     // const retrieveObject = localStorage.getItem
+    //     document.querySelector(".tasks").textContent = "";
+    //     addTasksToDOM(localStorage);
+    // })();
 }

@@ -1,10 +1,5 @@
 import { formatDistanceToNowStrict } from "date-fns";
 
-function addTaskToDOM (array) {
-    const allTasks = array;
-    const taskDiv = document.querySelector(".tasks");
-}
-
 export function addCategoryToFilterMenu (aCategory) {
     if (checkIfFilterExists(aCategory)) {
         const categoryFilters = document.querySelector("#filter-category");
@@ -19,7 +14,6 @@ export function addCategoryToFilterMenu (aCategory) {
         categoryButton.value = "" + aCategory.replace(/\s/g, "");
         categoryButton.id = "" + aCategory.replace(/\s/g, "");
         thisCategoryFilter.appendChild(categoryButton);
-
           // document.getElementById("categoryButton.id).addEventListener("click", () => {});      #for filtering
     }
 
@@ -37,9 +31,11 @@ export function addCategoryToFilterMenu (aCategory) {
 
 export function addTasksToDOM (filteredArray) {
     const DOM = document.querySelector(".tasks");
+    DOM.textContent = "";
+    console.log(filteredArray);
 
     for (let i = 0; i < filteredArray.length; i++) {
-        const key = filteredArray.key(i);
+        const key = filteredArray[i][0][0]
 
         const container = (() => {
             const container = document.createElement("div");
@@ -91,8 +87,6 @@ export function addTasksToDOM (filteredArray) {
                 toggleDetails(key);
             })
             thisTaskContainer.appendChild(button);
-
-            //PUT MORE DETAILS FUNCTIONALITY HERE
         })();
 
         const moreDetails = (() => {
