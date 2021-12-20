@@ -1,5 +1,5 @@
 import {createNewTaskForm} from "./form.js";
-import {addNewTask} from "./tasks.js";
+import {submit} from "./submit.js";
 import {addTasksToDOM, addToFilterMenu} from "./app.js";
 import {sort} from "./filter.js";
 
@@ -15,7 +15,7 @@ export function addEvents () {
         createNewTaskForm();
         document.getElementById("submit").addEventListener("click", function (event) {
             event.preventDefault();
-            addNewTask();
+            submit();
             closeForm();
         });
         document.getElementById("cancel").addEventListener("click", function() {
@@ -90,3 +90,4 @@ function closeForm () {
         const entireForm = document.getElementsByClassName("form-container");      
         entireForm[0].remove();
 }
+

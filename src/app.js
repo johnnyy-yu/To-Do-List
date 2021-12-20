@@ -1,4 +1,6 @@
-import { formatDistanceToNowStrict } from "date-fns";
+import { add, formatDistanceToNowStrict } from "date-fns";
+import { addEventToCategory } from "./events";
+import { sort } from "./filter";
 
 export function addToFilterMenu () {
     const categories = JSON.parse(localStorage.getItem("categories"));
@@ -9,6 +11,12 @@ export function addToFilterMenu () {
             const button = document.createElement("button");
             button.id = "filter-" + category.replace(/\s/g, "");
             button.textContent = category;
+            button.value = category;
+
+            button.onclick = function (event) {
+                const array = new sort()
+                addTasksToDOM(array.categories(event.target.value))
+            }
 
             const container = document.createElement("li");
             categoryFilterMenu.appendChild(container).appendChild(button);

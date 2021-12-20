@@ -150,4 +150,17 @@ export class sort {
 
         return filteredArray;
     }
+
+    categories(category) {
+        const array = this.sortedArray();
+        const filteredArray = [];
+
+        for (const tasks in array) {
+            if (array[tasks][1]["category"] == category) {
+                filteredArray.push([array[tasks]]);
+            }
+        }
+
+        return filteredArray;
+    }
 }

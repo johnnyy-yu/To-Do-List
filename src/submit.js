@@ -11,7 +11,7 @@ class Task {
     }
 }
 
-export function addNewTask () {
+export function submit () {
     let newTask = null;
 
     function createNewTaskFromForm () {
@@ -45,3 +45,4 @@ export function addNewTask () {
         addToFilterMenu();
     })();
 }
+
