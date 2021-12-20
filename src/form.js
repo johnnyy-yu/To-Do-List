@@ -39,6 +39,7 @@ export function createNewTaskForm () {
         const date = document.createElement("input");
         date.type = "date";
         date.id = "date";
+        date.valueAsDate = new Date();
         formFieldSet.appendChild(date);
     })();
 
@@ -92,12 +93,6 @@ export function createNewTaskForm () {
         const cancelButton = document.createElement("button");
         cancelButton.id = "cancel";
         cancelButton.textContent = "X";
-        cancelButton.addEventListener("click", () => {closeForm()});
         formFieldSet.appendChild(cancelButton);
     })();
-}
-
-export function closeForm () {
-    const entireForm = document.getElementsByClassName("form-container");      
-    entireForm[0].remove();
 }

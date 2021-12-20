@@ -2,15 +2,17 @@ import { isFuture, isPast, isThisWeek, isToday, isTomorrow } from "date-fns";
 
 export class sort {
     sortedArray() {
-        let convertedArray = [];
+        const convertedArray = [];
         let sortedArray = [];
 
         const convertStorageToArray = (() => {
-            const objects = Object.assign({}, localStorage);
+            const objects = {...localStorage};
             
             for (const tasks in objects) {
-                const taskDetails = JSON.parse((localStorage.getItem(tasks)));
-                convertedArray.push([tasks, taskDetails]);
+                if (tasks != "categories" && objects[tasks] !== "null") {
+                    const taskDetails = JSON.parse((objects[tasks]));
+                    convertedArray.push([tasks, taskDetails]);
+                }
             }
         })();
 

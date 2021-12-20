@@ -1,11 +1,15 @@
 import {createNewTaskForm} from "./form.js";
 import {addNewTask} from "./tasks.js";
-import {closeForm} from "./form.js";
-import {addTasksToDOM} from "./app.js";
+import {addTasksToDOM, addToFilterMenu} from "./app.js";
 import {sort} from "./filter.js";
 
 export function addEvents () {
     document.getElementById("collapse-bar").addEventListener("click", toggleFilterBar);
+
+    document.getElementById("home").addEventListener("click", function() {
+        const array = new sort();
+        addTasksToDOM(array.all());
+    })
 
     document.getElementById("add").addEventListener("click", function () {
         createNewTaskForm();
@@ -14,6 +18,9 @@ export function addEvents () {
             addNewTask();
             closeForm();
         });
+        document.getElementById("cancel").addEventListener("click", function() {
+            closeForm();
+        })
     });
 
     document.getElementById("filter-past").addEventListener("click", function () {
@@ -24,11 +31,6 @@ export function addEvents () {
     document.getElementById("filter-future").addEventListener("click", function () {
         const array = new sort();
         addTasksToDOM(array.future());
-    })
-
-    document.getElementById("home").addEventListener("click", function() {
-        const array = new sort();
-        addTasksToDOM(array.all());
     })
 
     document.getElementById("filter-all").addEventListener("click", function() {
@@ -65,6 +67,13 @@ export function addEvents () {
         const array = new sort();
         addTasksToDOM(array.notImportant());
     })
+
+    document.getElementById("deleteAll").addEventListener("click", function() {
+        localStorage.clear();
+        document.getElementsByClassName("tasks")[0].textContent = "";
+        localStorage.setItem("categories", JSON.stringify(new Array));
+        addToFilterMenu();
+    })
 };
 
 function toggleFilterBar() {
@@ -76,3 +85,8 @@ function toggleFilterBar() {
         toggle.style.display = "block";
     }
 };
+
+function closeForm () {
+        const entireForm = document.getElementsByClassName("form-container");      
+        entireForm[0].remove();
+}

@@ -2,7 +2,7 @@ import "./style.css";
 import "./navBar.css";
 import "./form.css";
 import {format} from "date-fns";
-import {addTasksToDOM} from "./app.js";
+import {addTasksToDOM, addToFilterMenu} from "./app.js";
 import {sort} from "./filter.js";
 import {addEvents} from "./events.js"
 
@@ -18,4 +18,14 @@ const currentDate = (() => {
 const showAllTasks = (() => {
     const array = new sort();
     addTasksToDOM(array.all());
+})();
+
+const categories = (() => {
+    if (!localStorage.getItem("categories")) {
+        localStorage.setItem("categories", JSON.stringify(new Array));
+    }
+})();
+
+const filterMenu = (() => {
+    addToFilterMenu()
 })();

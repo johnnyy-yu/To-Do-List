@@ -1,4 +1,4 @@
-import {addCategoryToFilterMenu} from "./app.js";
+import {addToFilterMenu} from "./app.js";
 import format from "date-fns/format";
 
 class Task {
@@ -31,7 +31,17 @@ export function addNewTask () {
         localStorage.setItem(newTask, JSON.stringify(createNewTaskFromForm()))
     })();
 
-    (function addCategoryToFilters () {
-        addCategoryToFilterMenu(newTask.category);
+    (function addCategoryToStorage () {
+        const category = createNewTaskFromForm().category;
+        let categories = JSON.parse(localStorage.getItem("categories"));
+
+        if (!categories.includes(category)) {
+            categories.push(category);
+            localStorage.setItem("categories", JSON.stringify(categories));
+        }
+    })();
+
+    const addCategoryToFilterMenu = (() => {
+        addToFilterMenu();
     })();
 }

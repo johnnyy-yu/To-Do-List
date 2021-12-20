@@ -1,31 +1,17 @@
 import { formatDistanceToNowStrict } from "date-fns";
 
-export function addCategoryToFilterMenu (aCategory) {
-    if (checkIfFilterExists(aCategory)) {
-        const categoryFilters = document.querySelector("#filter-category");
-        const categoryLI = document.createElement("li");
-        categoryLI.id = "category-" + aCategory.replace(/\s/g, "");
-        categoryFilters.appendChild(categoryLI);
+export function addToFilterMenu () {
+    const categories = JSON.parse(localStorage.getItem("categories"));
+    const categoryFilterMenu = document.querySelector("#filter-category");
+    categoryFilterMenu.textContent = ""
 
-        const thisCategoryID = "#" + categoryLI.id;
-        const thisCategoryFilter = document.querySelector(thisCategoryID);
-        const categoryButton = document.createElement("button");
-        categoryButton.textContent = aCategory;
-        categoryButton.value = "" + aCategory.replace(/\s/g, "");
-        categoryButton.id = "" + aCategory.replace(/\s/g, "");
-        thisCategoryFilter.appendChild(categoryButton);
-          // document.getElementById("categoryButton.id).addEventListener("click", () => {});      #for filtering
-    }
+    for (const category of categories) {
+            const button = document.createElement("button");
+            button.id = "filter-" + category.replace(/\s/g, "");
+            button.textContent = category;
 
-    function checkIfFilterExists (aCategory) {
-        const aCategoryID = "category-" + aCategory.replace(/\s/g, "");
-        console.log(document.getElementById(aCategoryID));
-
-        if (document.getElementById(aCategoryID)) {
-            return false;
-        } else {
-            return true;
-        }
+            const container = document.createElement("li");
+            categoryFilterMenu.appendChild(container).appendChild(button);
     }
 }
 
@@ -52,17 +38,6 @@ export function addTasksToDOM (filteredArray) {
             checkBox.className = "checkbox";
             checkBox.id = "checkbox-" + key;
             thisTaskContainer.appendChild(checkBox);
-
-            //PUT CHECKBOX FUNCTIONALITY HERE
-            // document.getElementById(checkBox.id).addEventListener("click", function() {
-            //     const colorToggle = document.getElementById(key);
-
-            //     if (colorToggle.style.color === "black") {
-            //         colorToggle.style.color = "grey";
-            //     } else {
-            //         colorToggle.style.color = "black"
-            //     }
-            // })
         })();
 
         const taskObject = retrievingObject(key);
@@ -139,13 +114,16 @@ export function addTasksToDOM (filteredArray) {
                 button.addEventListener("click", function () {
                     thisTaskContainer.remove();
                     thisDetailContainer.remove();
+                    // localStorage[key] = null
                     delete localStorage[key];
+
+                    
                 })
                 button.textContent = "Delete Task";
                 thisDetailContainer.appendChild(button);
             })();
         })();
-    }
+    };
 }
 
 function retrievingObject (key) {
