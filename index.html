@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Todo List</title>
-</head>
-<body>
-    <div class="nav-bar">
-        <ul class="nav-bar-buttons">
-            <li><button id="collapse-bar"><i class="material-icons">menu</i></button></li>
-            <li><button id="home"><i class="material-icons">home</i></button></li>
-            <li><button id="add"><i class="material-icons">add</i></button></li>
-        </ul>
-        <div id="today-date"></div>
-    </div>
-    <div class="content">
-        <div id="filter-bar">
-            <div class="filter-when">When</div>
-            <ul id="filter-when">
-                <li>
-                    <button id="filter-past">Past</button>
-                </li>
-                <li>
-                    <button id="filter-today">Today</button>
-                </li>
-                <li>
-                    <button id="filter-tomorrow">Tomorrow</button>
-                </li>
-                <li>
-                    <button id="filter-thisWeek">This Week</button>
-                </li>
-                <li>
-                    <button id="filter-future">Future</button>
-                </li>
-                <li>
-                    <button id="filter-all">All</button>
-                </li>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title>Todo List</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <ul class="nav-bar-buttons">
+                <li><button id="collapse-bar"><i class="material-icons">menu</i></button></li>
+                <li><button id="home"><i class="material-icons">home</i></button></li>
+                <li><button id="add"><i class="material-icons">add</i></button></li>
             </ul>
-            <div class="filter-category">Category</div>
-            <ul id="filter-category">
-
-            </ul>
-            <div class="filter-priority">Priority</div>
-            <ul id="filter-priority">
-                <li>
-                    <button id = "filter-important">Important</button>
-                </li>
-                <li>
-                    <button id = "filter-normal">Normal</button>
-                </li>
-                <li>
-                    <button id = "filter-notImportant">Not Important</button>
-                </li>
-            </ul>
-            <button id="deleteAll">Delete All Tasks</button>
+            <div id="today-date"></div>
         </div>
-        <div class="tasks">
+        <div class="content">
+            <div id="filter-bar">
+                <div class="filter-when">When
+                    <ul id="filter-when">
+                        <li>
+                            <button id="filter-past">Past</button>
+                        </li>
+                        <li>
+                            <button id="filter-today">Today</button>
+                        </li>
+                        <li>
+                            <button id="filter-tomorrow">Tomorrow</button>
+                        </li>
+                        <li>
+                            <button id="filter-thisWeek">This Week</button>
+                        </li>
+                        <li>
+                            <button id="filter-future">Future</button>
+                        </li>
+                        <li>
+                            <button id="filter-all">All</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="filter-category">Category
+                    <ul id="filter-category">
+                    </ul>
+                </div>
+                <div class="filter-priority">Priority
+                    <ul id="filter-priority">
+                        <li>
+                            <button id = "filter-important">Important</button>
+                        </li>
+                        <li>
+                            <button id = "filter-normal">Normal</button>
+                        </li>
+                        <li>
+                            <button id = "filter-notImportant">Not Important</button>
+                        </li>
+                    </ul>
+                </div>
+                <button id="deleteAll">Delete All Tasks</button>
+            </div>
+            <div id="tasks">
+            </div>
         </div>
-    </div>
-    <script src="main.js"></script>
-</body>
+        <script src="main.js"></script>
+    </body>
+    <!-- <footer>Made by johnnyy-yu</footer> -->
 </html>
