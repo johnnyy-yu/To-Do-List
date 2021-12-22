@@ -12,8 +12,6 @@ class Task {
 }
 
 export function submit () {
-    let newTask = null;
-
     function createNewTaskFromForm () {
         const task = document.getElementById("task").value;
         const description = document.getElementById("description").value;
@@ -21,7 +19,7 @@ export function submit () {
         const category = document.getElementById("category").value;
         const priority = document.getElementById("priority").value;
 
-        newTask = new Task(task, description, date, category, priority);
+        const newTask = new Task(task, description, date, category, priority);
 
         return newTask;
     }

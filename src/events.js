@@ -14,9 +14,11 @@ export function addEvents () {
     document.getElementById("add").addEventListener("click", function () {
         createNewTaskForm();
         document.getElementById("submit").addEventListener("click", function (event) {
+            const array = new sort();
             event.preventDefault();
             submit();
             closeForm();
+            addTasksToDOM(array.all());
         });
         document.getElementById("cancel").addEventListener("click", function() {
             closeForm();
@@ -70,7 +72,7 @@ export function addEvents () {
 
     document.getElementById("deleteAll").addEventListener("click", function() {
         localStorage.clear();
-        document.getElementsByClassName("tasks")[0].textContent = "";
+        // document.getElementsByClassName("tasks")[0].textContent = "";
         localStorage.setItem("categories", JSON.stringify(new Array));
         addToFilterMenu();
     })
@@ -78,11 +80,16 @@ export function addEvents () {
 
 function toggleFilterBar() {
     const toggle = document.getElementById("filter-bar");
+    const tasksToggle = document.getElementById("tasks");
 
-    if (toggle.style.display === "block") {
+    if (toggle.style.display === "flex") {
         toggle.style.display = "none";
+        tasksToggle.style.position = "unset";
+        // toggle.style.position = "inherit";
     } else {
-        toggle.style.display = "block";
+        toggle.style.display = "flex";
+        // tasksToggle.style.position = "relative";
+        toggle.style.position = "fixed";
     }
 };
 

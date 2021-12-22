@@ -1,22 +1,51 @@
 .nav-bar {
-    color: white;
-    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
     top: 0;
-    left: 0;
+    left:0;
     right: 0;
     width: 100%;
-    max-width: 100%;
-    background-color: rgb(73, 113, 189);
-    padding: 18px 12px;
+    z-index: 1;
+    height: 60px;
+    width: calc(100vw - 40px);
+    background-color: rgb(243, 89, 89);
+    color: white;
+    padding: 0 20px;
 }
 
 .material-icons {
     font-size: 18px;
-    color: rgba(255, 255, 255, 1); 
+    color: rgb(255, 255, 255); 
+    text-align: center;
+    vertical-align: text-bottom;
+    padding: 2px;
 }
 
-#today-date {
-    position: fixed;
-    right: 0px;
-    padding: 5px 12px;
+#collapse-bar,
+#home,
+#add {
+    background-color: rgba(228, 228, 228, 0.548);
+    border: none;
+    text-align: center;
+    margin: 0 4px;
+    border-radius: 10px;
+}
+
+#collapse-bar:hover,
+#home:hover,
+#add:hover {
+    background-color: rgba(228, 228, 228, 0.822);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
 }

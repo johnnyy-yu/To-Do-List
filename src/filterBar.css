@@ -1,0 +1,89 @@
+@font-face {
+    font-family: biggerFont;
+    src: url("./DM_Sans/DMSans-Medium.ttf");
+}
+
+#filter-bar {
+    display: none;
+    flex-direction: column;
+    justify-content:flex-start;
+    gap: 10px;
+    max-width: 200px;
+    padding: 40px 20px;
+    box-shadow: rgba(192, 192, 192, 0.5) 1px 0;
+    height: calc(100% - 140px);
+    /* height: 100%; */
+    background-color: rgba(228, 228, 228, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.filter-when ,
+.filter-category,
+.filter-priority {
+    font-family: biggerFont;
+}
+
+
+#deleteAll {
+    /* flex:1; */
+    position: fixed;
+    bottom: 50px;
+    border: none;
+    border-radius: 10px;
+    padding: 4px 40px;
+    text-align: center;
+    font-size: 14px;
+    background-color: rgba(228, 228, 228, 1);
+    color:white;
+}
+
+#deleteAll:hover {
+    background-color: rgb(172, 172, 172);
+}
+
+#filter-when button,
+#filter-category button,
+#filter-priority button {
+    border-radius: 10px;
+    margin: 0 2px 0 0;
+    padding: 2px 8px;
+    color: white;
+    border: none;
+}
+
+#filter-priority {
+    flex: 1;
+}
+
+#filter-when button {
+    background-color: rgb(255, 187, 0);
+}
+
+
+#filter-when button:hover {
+    background-color: rgb(255, 160, 0);
+}
+
+#filter-important  {
+    background-color: rgb(255, 0, 0);
+}
+
+#filter-normal {
+    background-color: rgba(255, 9, 1, 0.65);
+}
+
+#filter-notImportant {
+    background-color:rgba(255, 9, 1, 0.30);
+}
+
+#filter-priority button:hover {
+    background-color:rgb(196, 42, 42);
+}
+
+#filter-category button {
+    background-color: rgba(255, 0, 179, 0.603);
+}
+
+#filter-category button:hover {
+    background-color: rgba(255, 0, 179, 1)
+}

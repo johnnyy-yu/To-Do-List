@@ -24,7 +24,7 @@ export function addToFilterMenu () {
 }
 
 export function addTasksToDOM (filteredArray) {
-    const DOM = document.querySelector(".tasks");
+    const DOM = document.querySelector("#tasks");
     DOM.textContent = "";
 
     for (let i = 0; i < filteredArray.length; i++) {
@@ -33,6 +33,7 @@ export function addTasksToDOM (filteredArray) {
         const container = (() => {
             const container = document.createElement("div");
             container.id = key;
+            container.className = "tasks-container"
             // container.style.color = "black";
             DOM.appendChild(container);
         })();
@@ -44,7 +45,7 @@ export function addTasksToDOM (filteredArray) {
             const checkBox = document.createElement("input");
             checkBox.type = "checkbox";
             checkBox.className = "checkbox";
-            checkBox.id = "checkbox-" + key;
+            // checkBox.id = "checkbox-" + key;
             thisTaskContainer.appendChild(checkBox);
         })();
 
@@ -54,16 +55,25 @@ export function addTasksToDOM (filteredArray) {
             for (const property of properties) {
                 const aObjectProperty = document.createElement("div");
                 aObjectProperty.className = "task-" + property;
-                aObjectProperty.id = key + "-" + property;
+                // aObjectProperty.id = key + "-" + property;
                 aObjectProperty.textContent = taskObject[property];
+
+                if (taskObject[property] == "Not Important") {
+                    aObjectProperty.style.background = "rgba(255, 9, 1, 0.30)";
+                } else if (taskObject[property] == "Normal") {
+                    aObjectProperty.style.background = "rgba(255, 9, 1, 0.65)";
+                } else if (taskObject[property] == "Important") {
+                    aObjectProperty.style.background = "rgb(255, 0, 0)";
+                }
+
                 thisTaskContainer.appendChild(aObjectProperty);
             }
-        })(["task", "category", "priority", "when"]);
+        })(["task", "when"]);
 
         const moreDetailsButton = (() => {
             const button = document.createElement("button");
             button.className = "button-details";
-            button.id = key + "-moreDetails"
+            // button.id = key + "-moreDetails"
             button.textContent = "V";
             button.addEventListener("click", function () {
                 toggleDetails(key);
@@ -86,7 +96,7 @@ export function addTasksToDOM (filteredArray) {
             const objectDescription = (() => {
                 const description = document.createElement("div");
                 description.className = "task-description";
-                description.id = key + "-description"
+                // description.id = key + "-description"
                 description.textContent = "Description:\n" + taskObject["description"];
                 thisDetailContainer.appendChild(description);
             })();
@@ -94,7 +104,7 @@ export function addTasksToDOM (filteredArray) {
             const fromNow = (() => {
                 const date = document.createElement("div");
                 date.className = "task-fromNow";
-                date.id = key + "-fromNow";
+                // date.id = key + "-fromNow";
                 date.textContent = "When:\n" + formatDistanceToNowStrict(new Date(taskObject["when"].replace(/-/g, '\/')), 
                     {addSuffix: true, roundingMethod: "round"});
                 thisDetailContainer.appendChild(date);
@@ -103,7 +113,7 @@ export function addTasksToDOM (filteredArray) {
             const detailCategory = (() => {
                 const category = document.createElement("div");
                 category.className = "detail-category";
-                category.id = "detail-category" + key;
+                // category.id = "detail-category" + key;
                 category.textContent = "Category:\n" + taskObject["category"];
                 thisDetailContainer.appendChild(category);
             })();
@@ -111,7 +121,7 @@ export function addTasksToDOM (filteredArray) {
             const detailPriority = (() => {
                 const priority = document.createElement("div");
                 priority.className = "detail-priority";
-                priority.id = "detail-priority" + key;
+                // priority.id = "detail-priority" + key;
                 priority.textContent = "Priority:\n" + taskObject["priority"];
                 thisDetailContainer.appendChild(priority);
             })();
@@ -144,9 +154,9 @@ function toggleDetails (key) {
     const detailContainer = key + "-details";
     const toggle = document.getElementById(detailContainer);
 
-    if (toggle.style.display === "block") {
+    if (toggle.style.display === "flex") {
         toggle.style.display = "none";
     } else {
-        toggle.style.display = "block";
+        toggle.style.display = "flex";
     }
 }

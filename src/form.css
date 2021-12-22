@@ -1,12 +1,14 @@
-.form-container {
+/* .form-container {
+    background-color: silver;
     position: absolute;
+    top :0;
     left: 0;
     width: 100%;
     max-width: 100vw;
     padding: 300px 0 0;
-}
+} */
 
-legend {
+/* legend {
     text-align: center;
 }
 
@@ -76,4 +78,4 @@ fieldset {
     width: 36%;
     margin-left: 60%;
     text-align: center
-}
+} */
