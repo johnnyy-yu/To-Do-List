@@ -1,22 +1,33 @@
-/* .form-container {
-    background-color: silver;
-    position: absolute;
+@font-face {
+    font-family: "Myfont";
+    src: url("./DM_Sans/DMSans-Regular.ttf");
+}
+
+.form-container {
+    font-family: "Myfont";
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    position: fixed;
     top :0;
     left: 0;
-    width: 100%;
-    max-width: 100vw;
-    padding: 300px 0 0;
-} */
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+}
 
-/* legend {
+legend {
     text-align: center;
 }
 
 #form {
-    margin: 0 4%;
+    width: 100%;
 }
 
 fieldset {
+    width: 90%;
+    height: 100%;
+    margin: 0 3%;
     padding: 4% 2% 8%;
     display: grid;
     grid-template-columns: [start] 40% [line2] 20% [line3] 20% [line4] 20%;
@@ -26,15 +37,20 @@ fieldset {
 #task,
 #date,
 #category,
-#priority {
+#priority,
+#submit,
+#cancel {
+    font-family: "Myfont";
     border-radius: 28px;
-    padding: 0 16px 0;
+    padding: 0 2% 0;
+    border-width: 1px;
 }
 
 #task {
     grid-column-end: 4;
     grid-column-start: 1;
     height: 120%;
+    padding: 0 1%;
 }
 
 #date {
@@ -43,25 +59,35 @@ fieldset {
 }
 
 #description {
+    font-family: "Myfont";
     margin-top: 6%;
     grid-column-start: 1;
     grid-column-end: 3;
     height: 165%;
     resize: none;
     border-radius: 100px;
-    padding: 20px 40px 0 40px;
+    padding: 1% 5%;
 }
 
-#category {
+#category, 
+#priority {
     margin-top: 18%;
     margin-left: 10%;
     height: 60%;
 }
 
-#priority {
-    margin-left: 10%;
-    margin-top: 18%;
-    height: 70%;
+#submit,
+#cancel {
+    background-color: rgba(243, 89, 89, 0.85);
+    color: white;
+    border: none;
+    text-align: center;
+    padding: 1% 2%;
+}
+
+#submit:hover,
+#cancel:hover {
+    background-color: rgb(228, 55, 55);
 }
 
 #submit {
@@ -69,13 +95,12 @@ fieldset {
     grid-column-start: 3;
     width: 36%;
     margin-left: 114%;
-    text-align: center;
 }
 
 #cancel {
+    color: white;
     grid-row-start: 4;
     grid-column-start: 4;
     width: 36%;
     margin-left: 60%;
-    text-align: center
-} */
+}

@@ -21,25 +21,32 @@ html {
 
 .content {
     display: flex;
-    height: calc(100% - 60px);
+    justify-content: center;
+    height: calc(100% - 10px);
 }
 
 #tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     flex: 1;
-    height: calc(100% - 30px);
+    height: calc(100% - 28px);
+    /* width: 100%; */
     overflow: auto;
     margin: 10px 0 0; 
 }
 
-.tasks-container {
+.tasks-container,
+.details-container {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
+    width: calc(100vw - 104px);
     padding: 12px 32px;
     margin: 0 20px;
-    border: 2px solid silver;
+    border: 1px solid silver;
     border-radius: 30px;
 }
-
 
 .task-task {
     flex: 1;
@@ -48,33 +55,62 @@ html {
     white-space: nowrap;
 }
 
-/* .task-category,
+.task-category,
 .task-priority {
-    color: white;
-    border-radius: 10px;
-    text-overflow: ellipsis;
-}
-
-.task-category {
-    text-align: center;
-    min-width: 8%;
-    max-width: 14%;
-    margin-right: 10px;
-    background-color: rgba(255, 0, 179, 0.603);
-} */
-
-.task-priority {
-    flex: 1;
-    max-width: 8%;
-    text-align: center;
+    color: black;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .task-when {
     text-align: center;
     max-width: 28%;
-    margin: 0 2%;
+    margin: 0 4%;
 }
 
-.button-detail {
-    max-width: 1%;
+.button-details {
+    color: white;
+    background-color: rgba(228, 228, 228, 0.548);
+    border: none;
+    border-radius: 10px;
+    padding: 3px 7px;
+}
+
+.button-details:hover {
+    background-color: rgba(228, 228, 228, 0.822);
+}
+
+.details-container {
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    white-space: pre-wrap;
+    width: calc(100vw - 160px);
+    max-height: 100%;
+    border-radius: 0;
+    margin: -11px 0 30px 0;
+    overflow: auto;
+}
+
+.task-description ,
+.task-fromNow, 
+.detail-category,
+.detail-priority,
+.deleteTask {
+    margin: 10px;
+}
+
+.task-description {
+    flex:1;
+}
+
+.deleteTask {
+    color: red;
+    text-decoration: none;
+    background-color: white;
+    border: none;
+}
+
+.deleteTask:hover {
+    color: rgb(185, 0, 0)
 }

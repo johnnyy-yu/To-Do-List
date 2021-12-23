@@ -8,6 +8,7 @@ class Task {
         this.when = when;
         this.category = category;
         this.priority = priority;
+        this.completed = false;
     }
 }
 

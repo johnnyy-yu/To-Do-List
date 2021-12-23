@@ -1,7 +1,7 @@
 import "./style.css";
-import "./navBar.css";
+import "./nav-bar.css";
 import "./form.css";
-import "./filterBar.css";
+import "./filter-bar.css";
 import {format} from "date-fns";
 import {addTasksToDOM, addToFilterMenu} from "./app.js";
 import {sort} from "./filter.js";

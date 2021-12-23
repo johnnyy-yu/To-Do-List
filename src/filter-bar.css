@@ -9,10 +9,10 @@
     justify-content:flex-start;
     gap: 10px;
     max-width: 200px;
+    left: 0;
     padding: 40px 20px;
     box-shadow: rgba(192, 192, 192, 0.5) 1px 0;
     height: calc(100% - 140px);
-    /* height: 100%; */
     background-color: rgba(228, 228, 228, 0.5);
     backdrop-filter: blur(2px);
 }
@@ -25,7 +25,6 @@
 
 
 #deleteAll {
-    /* flex:1; */
     position: fixed;
     bottom: 50px;
     border: none;

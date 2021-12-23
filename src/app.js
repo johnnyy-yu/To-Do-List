@@ -34,28 +34,40 @@ export function addTasksToDOM (filteredArray) {
             const container = document.createElement("div");
             container.id = key;
             container.className = "tasks-container"
-            // container.style.color = "black";
             DOM.appendChild(container);
         })();
 
         const thisTaskContainerID = "#" + key;
         const thisTaskContainer = document.querySelector(thisTaskContainerID);
+        const taskObject = retrievingObject(key);
 
         const checkBox = (() => {
             const checkBox = document.createElement("input");
             checkBox.type = "checkbox";
             checkBox.className = "checkbox";
-            // checkBox.id = "checkbox-" + key;
+            checkBox.onclick = function() {
+                if (taskCompleted(key)) {
+                    document.getElementById(key).style.color = "silver";
+                } else {
+                    document.getElementById(key).style.color = "black";
+                }
+            }
+
+            if (taskObject["completed"] === true) {
+                checkBox.checked = true;
+                document.getElementById(key).style.color = "silver";
+            } else {
+                checkBox.checked = false;
+                document.getElementById(key).style.color = "black";
+            }
+            
             thisTaskContainer.appendChild(checkBox);
         })();
-
-        const taskObject = retrievingObject(key);
 
         const objectProperties = ((properties) => {
             for (const property of properties) {
                 const aObjectProperty = document.createElement("div");
                 aObjectProperty.className = "task-" + property;
-                // aObjectProperty.id = key + "-" + property;
                 aObjectProperty.textContent = taskObject[property];
 
                 if (taskObject[property] == "Not Important") {
@@ -73,7 +85,6 @@ export function addTasksToDOM (filteredArray) {
         const moreDetailsButton = (() => {
             const button = document.createElement("button");
             button.className = "button-details";
-            // button.id = key + "-moreDetails"
             button.textContent = "V";
             button.addEventListener("click", function () {
                 toggleDetails(key);
@@ -104,7 +115,6 @@ export function addTasksToDOM (filteredArray) {
             const fromNow = (() => {
                 const date = document.createElement("div");
                 date.className = "task-fromNow";
-                // date.id = key + "-fromNow";
                 date.textContent = "When:\n" + formatDistanceToNowStrict(new Date(taskObject["when"].replace(/-/g, '\/')), 
                     {addSuffix: true, roundingMethod: "round"});
                 thisDetailContainer.appendChild(date);
@@ -113,7 +123,6 @@ export function addTasksToDOM (filteredArray) {
             const detailCategory = (() => {
                 const category = document.createElement("div");
                 category.className = "detail-category";
-                // category.id = "detail-category" + key;
                 category.textContent = "Category:\n" + taskObject["category"];
                 thisDetailContainer.appendChild(category);
             })();
@@ -121,7 +130,6 @@ export function addTasksToDOM (filteredArray) {
             const detailPriority = (() => {
                 const priority = document.createElement("div");
                 priority.className = "detail-priority";
-                // priority.id = "detail-priority" + key;
                 priority.textContent = "Priority:\n" + taskObject["priority"];
                 thisDetailContainer.appendChild(priority);
             })();
@@ -132,7 +140,6 @@ export function addTasksToDOM (filteredArray) {
                 button.addEventListener("click", function () {
                     thisTaskContainer.remove();
                     thisDetailContainer.remove();
-                    // localStorage[key] = null
                     delete localStorage[key];
 
                     
@@ -158,5 +165,21 @@ function toggleDetails (key) {
         toggle.style.display = "none";
     } else {
         toggle.style.display = "flex";
+    }
+}
+
+function taskCompleted (key) {
+    const task = JSON.parse(localStorage.getItem(key));
+    
+    if (task["completed"] === false) {
+        task["completed"] = true;
+        localStorage.setItem(key, JSON.stringify(task));
+        
+        return true;
+    } else {
+        task["completed"] = false;
+        localStorage.setItem(key, JSON.stringify(task));
+        
+        return false;
     }
 }

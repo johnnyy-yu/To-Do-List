@@ -72,10 +72,12 @@ export function addEvents () {
 
     document.getElementById("deleteAll").addEventListener("click", function() {
         localStorage.clear();
-        // document.getElementsByClassName("tasks")[0].textContent = "";
         localStorage.setItem("categories", JSON.stringify(new Array));
         addToFilterMenu();
+        const array = new sort();
+        addTasksToDOM(array.all());
     })
+
 };
 
 function toggleFilterBar() {
@@ -85,10 +87,8 @@ function toggleFilterBar() {
     if (toggle.style.display === "flex") {
         toggle.style.display = "none";
         tasksToggle.style.position = "unset";
-        // toggle.style.position = "inherit";
     } else {
         toggle.style.display = "flex";
-        // tasksToggle.style.position = "relative";
         toggle.style.position = "fixed";
     }
 };
@@ -97,4 +97,3 @@ function closeForm () {
         const entireForm = document.getElementsByClassName("form-container");      
         entireForm[0].remove();
 }
-
